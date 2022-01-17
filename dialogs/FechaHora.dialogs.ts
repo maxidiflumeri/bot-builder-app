@@ -10,7 +10,7 @@ export class FechaHoraDialogs extends ComponentDialog {
         super(dialogId)
         this.addDialog(new WaterfallDialog('FechaHora', [
             async (step: WaterfallStepContext) => {
-                await step.context.sendActivity(`${this.dateTime}`)
+                await step.context.sendActivity(`${this.dateTime}`)                
                 return await step.endDialog()
             },
         ]))

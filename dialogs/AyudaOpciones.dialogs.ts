@@ -1,14 +1,9 @@
-import { ComponentDialog, PromptOptions, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs'
-import * as moment from 'moment'
+import { ComponentDialog, DialogSet, PromptOptions, WaterfallDialog, WaterfallStepContext } from 'botbuilder-dialogs'
 import 'moment/locale/es';
-import {EstadoClimaDialogs} from './estadoClima.dialogs'
 
 export class AyudaOpcionesDialogs extends ComponentDialog {
 
-    private dateTime = moment().format('MMMM Do YYYY, h:mm:ss a')
-
-
-    constructor(dialogId: string) {
+    constructor(dialogId: string, dialog: DialogSet) {
         super(dialogId)
         this.addDialog(new WaterfallDialog('Ayuda', [
             async (step: WaterfallStepContext) => {
@@ -19,7 +14,8 @@ export class AyudaOpcionesDialogs extends ComponentDialog {
                 }
                 return await step.prompt('choicePrompt', options)
             },
-            async (step: WaterfallStepContext) => {
+            async (step: WaterfallStepContext) => {                
+                const dc = await dialog.createContext(step.context)
                 switch (step.result.index) {
                     case 0:
                         await step.context.sendActivity(`Tu puedes preguntar:\n* _Este es el chatbot de presentacion?_\n* _De que esta hablando ahora?_\n* _Hay otra persona hablando?_`)
@@ -31,10 +27,10 @@ export class AyudaOpcionesDialogs extends ComponentDialog {
                         await step.context.sendActivity(`Tu puedes preguntar:\n* _Donde estan hablando?_\n* _Donde es la charla de bot framework?_\n* _A que hora es la charla de bot framework?_`)
                         break
                     case 3:
-                        await step.context.sendActivity(`${this.dateTime}`)
+                        await dc.beginDialog("FechaHora")
                         break
                     case 4:
-                        const estadoClima: EstadoClimaDialogs = new EstadoClimaDialogs('EstadoClima')
+                        await dc.beginDialog("EstadoClima")
                         break
                     default:
                         break

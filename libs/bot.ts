@@ -16,16 +16,16 @@ export class EchoBot {
         this.addDialogs()
     }
 
-    async onTurn(context: TurnContext) {
+    async onTurn(context: TurnContext) {       
 
-        const dc = await this._dialogs.createContext(context)
+        const dc = await this._dialogs.createContext(context)        
         await dc.continueDialog()
         if (context.activity.text != null && context.activity.text.toLowerCase() === 'ayuda') {
             await dc.beginDialog("Ayuda")
         } else if (context.activity.text != null && context.activity.text.toLowerCase() === 'este es el chatbot de presentacion') {
             await dc.beginDialog("Opcion1Pregunta1")
         } else if (context.activity.text != null && context.activity.text.toLowerCase().includes('clima')) {
-            await dc.beginDialog("EstadoClima")
+            await dc.beginDialog("EstadoClima")            
         } else if (context.activity.text != null && (context.activity.text.toLowerCase().includes('hora') || context.activity.text.toLowerCase().includes('fecha'))) {
             await dc.beginDialog("FechaHora")
         } else {
@@ -35,8 +35,8 @@ export class EchoBot {
         await this._conversationState.saveChanges(context)
     }
 
-    private addDialogs(): void {
-        this._dialogs.add(new AyudaOpcionesDialogs('Ayuda'))
+    private addDialogs(): void {        
+        this._dialogs.add(new AyudaOpcionesDialogs('Ayuda', this._dialogs))
         this._dialogs.add(new Opcion1Pregunta1Dialog('Opcion1Pregunta1'))
         this._dialogs.add(new EstadoClimaDialogs('EstadoClima'))
         this._dialogs.add(new FechaHoraDialogs('FechaHora'))
