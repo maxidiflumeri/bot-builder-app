@@ -1,0 +1,18 @@
+{
+    "name": "bot-builder-app",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "http://localhost:3978/api/messages",
+            "id": "41ecaee0-72ff-11ec-8aa5-01c8b0c95eec",
+            "appId": "",
+            "appPassword": "",
+            "endpoint": "http://localhost:3978/api/messages"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Users\\mdiflume\\Documents\\Proyectos\\Propios\\Bot-builder-app\\bot-builder-app.bot",
+    "overrides": null
+}

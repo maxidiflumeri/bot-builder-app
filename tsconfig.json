@@ -1,0 +1,19 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "sourceMap": true,
+        "declaration": false,
+        "removeComments": true,
+        "outDir": "./dist",
+        "allowJs": true,
+        "strict": true,
+        "moduleResolution": "node"
+        
+    },
+    "files": [        
+        "./libs/bot.ts",
+        "./libs/app.ts"
+    ]
+}

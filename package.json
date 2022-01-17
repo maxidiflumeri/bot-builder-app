@@ -1,0 +1,24 @@
+{
+  "name": "bot-builder-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "dev": "nodemon ./libs/app.ts",
+    "prod": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/restify": "^7.2.3",
+    "axios": "^0.24.0",
+    "botbuilder": "^4.15.0",
+    "botbuilder-dialogs": "^4.15.0",
+    "moment": "^2.29.1",
+    "restify": "^7.2.1",
+    "typescript": "^2.9.2"
+  }
+}
